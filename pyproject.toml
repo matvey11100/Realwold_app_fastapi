@@ -1,0 +1,60 @@
+[project]
+name = "fastapi-realworld-app"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "matvey11100", email = "matvey11100@gmail.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "alembic>=1.20.0",
+    "asyncpg>=0.32.0",
+    "fastapi[standard]>=0.143.1",
+    "passlib[bcrypt]>=1.7.4",
+    "pydantic[email]>=2.14.1",
+    "pyjwt[crypto]>=2.15.1",
+    "sqlalchemy>=2.0.0",
+]
+
+[project.scripts]
+fastapi-realworld-app = "fastapi_realworld_app:main"
+
+[build-system]
+requires = ["uv_build>=0.13.1,<0.14.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "pytest>=9.1.1",
+    "ruff>=0.17.0",
+]
+
+[tool.ruff]
+# Целевая версия Python (подставьте вашу, например, 3.11 или 3.12)
+target-version = "py311"
+# Длина строки (стандарт для современных проектов — 88 или 100 символов)
+line-length = 100
+
+[tool.ruff.lint]
+# Выбираем наборы правил для проверки
+select = [
+    "E",   # Ошибки стиля кода (pycodestyle)
+    "W",   # Предупреждения стиля кода (pycodestyle)
+    "F",   # Ошибки логики и синтаксиса (pyflakes)
+    "I",   # Автоматическая сортировка импортов (замена isort)
+    "B",   # Поиск потенциальных багов (flake8-bugbear)
+    "C4",  # Оптимизация списков/словарей (flake8-comprehensions)
+    "UP",  # Предложение современного синтаксиса Python (pyupgrade)
+    "ASYNC", # Проверка асинхронного кода (актуально для FastAPI)
+]
+
+# Правила, которые мы сознательно отключаем
+ignore = [
+    "B008", # Разрешает использовать вызовы функций в аргументах (нужно для Depends() в FastAPI)
+]
+
+[tool.ruff.lint.isort]
+# Группируем импорты так, чтобы FastAPI и сторонние библиотеки были отдельно от вашего кода
+section-order = ["future", "standard-library", "third-party", "first-party", "local-folder"]
