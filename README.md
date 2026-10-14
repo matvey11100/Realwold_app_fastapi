@@ -12,7 +12,7 @@ git clone https://github.com/matvey11100/Realwold_app_fastapi.git
 cd Realwold_app_fastapi
 
 2. Install dependencies
-pip install requirements.txt
+python -m pip install -r requirements.txt
 
 3. Start the development server
 uvicorn src.main:app --reload
