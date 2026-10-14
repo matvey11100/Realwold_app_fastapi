@@ -16,46 +16,25 @@ cd Realwold_app_fastapi
 
 ### Установка и запуск
 
-**1. Создание виртуального окружения**
+**1. Установи uv**
 
-```bash
-python -m venv venv
-```
+Инструкции для Windows, macOS и Linux: https://docs.astral.sh/uv/getting-started/installation/
 
-**2. Активация виртуального окружения**
-
-Windows — CMD:
-
-```bat
-venv\Scripts\activate.bat
-```
-
-Windows — PowerShell:
-
-```powershell
-.\venv\Scripts\Activate.ps1
-```
-
-macOS / Linux — Bash или Zsh:
-
-```bash
-source venv/bin/activate
-```
-
-**3. Установка зависимостей**
-
-```bash
-pip install uv
-```
+**2. Синхронизируй зависимости проекта**
 
 ```bash
 uv sync
 ```
 
-3. Start the development server
-```powershell
-uvicorn src.main:app --reload
+Команда создаст виртуальное окружение `.venv` (если его ещё нет) и установит зависимости из `pyproject.toml` и lock-файла.
+
+**3. Запусти приложение**
+
+```bash
+uv run uvicorn src.main:app --reload
 ```
+
+При необходимости предварительно настрой переменные окружения в соответствии с конфигурацией приложения.
 
 Запуск фронтенда в формате разработки (angular) (node.js 18):
 ng serve

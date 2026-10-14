@@ -3,18 +3,14 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI()
+from src.config import settings
 
-# Адрес запущенного фронтенда
-origins = [
-    "http://localhost:4200",
-    "http://127.0.0.1:4200",
-]
+app = FastAPI(title=settings.app_name, debug=settings.debug)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
+    allow_origins=settings.cors_origin,
+    allow_credentials=settings.cors_allow_credentials,
     allow_methods=["*"],  # Разрешаем GET, POST, PUT, DELETE
     allow_headers=["*"],  # Разрешаем все заголовки (включая Authorization: Token...)
 )
