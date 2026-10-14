@@ -1,0 +1,7 @@
+fastapi[standard]
+sqlalchemy>=2.0.0
+alembic
+asyncpg
+pydantic[email]
+pyjwt[crypto]
+passlib[bcrypt]
